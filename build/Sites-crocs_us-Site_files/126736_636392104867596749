@@ -1,0 +1,204 @@
+//Comment Card Javascript Template for Universal Code
+
+iperceptions_126736 = window.iperceptions || {};
+
+//BEGIN Configuration variables
+iperceptions_126736.imgSizeOut = [68, 68];
+iperceptions_126736.imgSizeOver = [180, 68];
+iperceptions_126736.blockMobile = true;
+iperceptions_126736.surveyID = 126736;
+iperceptions_126736.langIDArray = [1];
+iperceptions_126736.posXArray = ['left'];
+iperceptions_126736.posYArray = ['bottom'];
+iperceptions_126736.winWidth = 676;
+iperceptions_126736.winHeight = 676;
+
+//Reserved for advanced use.  Do not modify these.
+iperceptions_126736.iconBrandID = null;
+iperceptions_126736.logoBrandID = null;
+iperceptions_126736.siteID = null;
+iperceptions_126736.imgOutArray = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAQPSURBVHhe7Zg9rtNQEIWzBbbAFtgCW2ALdNSvpUTUNDRUSEivgobmUSEhUSA6JCREAQ0N0CAKqsf7opxoPD5ObmLHuY5zpE9O/HvnZGbudRZnZT14fr36dNZSGHI2JUiGnE1ZKRpyNuVG2ZDZm+IMgdnKmSFmKWdEZHZyJmRmJWeAYzZywXcxC7nAN3HyckFv46TlAg7curi8vvP4dfvYySoHGsCMD99/Xf/++29GpuQgV8gMaT6m5ABviGZgxKOrT+vPp29KCi6bIQMuXn1s7WtwMgpB5TJBGKHjMuXrzz/rfQ1OQqtgcmYQPFuUTbEZIiavVSBXn38sg48lwdaZspVJaxUEwVMK+dfv2r+VySoEQdnE73n/vWdvlzMOFBk0SblADE/ffVmWTlRRGU1OLoiE1iFI2UHPob90ZVWDSckFkFBjZRYCTKB8EFt3TYvJyA0+oMAvP35bT83Ad3T3yRt7nWUScgNPkCGUCJ9lClK20EsopdPoKW7QCQKVAaAewlblJMkkd581VcsN2IAprEcQ2UDQMkPrFBnHcXePBtXKDXYD+vVj1iCVi7IoXtNJlXIDLUBG5MxA6jdFVCc3yAJkgqZdfUf3X7xvnb+RquQGWIBmG/oIWwwBVrQcJ3PIGChaq1QjN7hCMCW+Jd9++HK5P2aLpKzBqM6XxSqUB7UHcZolcEnZgWmYwCJOMxMLu3iPNUeXG1QPNDWTJdpHNiCZobLCyPoyJQ+mBwSI8rQbsyaaoR5Ulyl5ID0hQLJE3wnWZYambbax5BocRW4gPVBDpW/QJ/Y2Q4wuN4ie0DwxQHJmIPbXNyW7AQyASsWZQUkxA2nKLlrIjSb38IHQfyVdZcK6BcWes5FR5B48MMoEFGcUGYK29hJxcLmHDgyZon/YtJoF9RkMi+dv5aByDzwAZAA9BWOYiZQ17CNrgH1w3EbrHnYg8juOzNDxOAPFlW4nB5F70AHh12eGIWCyhi1GsKWcQNlT9Af24HIPGYmcMRiDCVrqY5y7rsWgcg8YCQJGyg41Wa1u2e+uswwmd/ORUCZgBOVDdsgMLeg4RyWWr28xiNyNR4RAZYIkg2KTRXFR10lvuZuOTAxemaHvbMkS9ZvOP5YiveRueAQoFy3QFDxL+pgRMilniV237K18oyOiQNVs80ufpuNoiBqx7TF7Kd+kApQhLshokszIC7wGO8vd5MjEnkJW8Dm+A0GRGWInuRtUAKaoRJCaLexkhiiWu7giCNi9ISN6jcj9xlIkd2GlRDOcbGPNbJW7qEI081AmBK5y4jPTrnDXttgod0GFqKeoZ6jp5mZbTKfcyZWDKQhT3PFirNyJlaN1CmXkju9ES+6kytE6pbhnbKMhd8IE2Lt3dLGWOzhXFovFfxsfjagKAeHXAAAAAElFTkSuQmCC'];
+iperceptions_126736.imgOverArray = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABECAYAAAAoXx8rAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVuSURBVHhe7ZxtkqsqEIbv1jI/ZyfZi0vJRmYhsw4vDd1KN186yUkA36eKUxOBppVHNNE6/31/f68oKLMUCI0yVYHQKFMVJTQAowKhwVRAaDAVEBpMBYQGUwGhwVRAaDAVEBpMBYQGUwGhwVRAaDAVgwn9uz7ut/V2W9Yf3rK6v5bbbf36+lrvj1/e5rYu1O6+RptSfpak398JedzuD5dl7vO7+NS4fTCY0BlRWUoqt0U0z4mfoSuhXfuXSAihhxL693FXEspnL7RM4u9jvdOkboIX4HatZsd4RqRrS/hKhhNay8orsRPhEa/cduXlPiJ+XmCRanErZRTrUF/CSplKGp98VEJ+YR9kW3vcPS7tc63e5pFv74ivctv+N65unTKe0GrC+G+aHZ4U+lPE8ZOmToBQl7+35lhx3eG+RFkk/5ljyUmmb53ybfPj2jwb455tz8cRQr+N6P44kjiWIMgSJkTJTRixduxEn+lLNEThvl6WaIyAblsf145jvy808rDt7dUsiTcWAwq9T/j9Hq9cPBFumxfbyGGLrH47duLP9CVaIpE7+yXfxylIWB+3IWhSX2+fnDxJvLEYUmhZVfwkF4SJL9d6wkqkAh7vS7REigl1e566bX1cG/c5obFC90B8+Y5nPRJ928xt24LbiXcc7ks0RLLiqNsIlkjaVsdtCNrKo9We8yzH65sxheZJSeQSEbbbEIa3U3sllaIwcYf6Ei2RHNEJRyU+GUVaKn5zcVwb91mhHVFet+XRiNc3gwoN/h0s/CACWyD01dmuamZFVpe+cYDQQN3u+NuOQVdnAkKDqYDQYCo6FDrcw8WXQH8ZjL+VD/XNe6xfCUanW6GVAPLFZdsGoUGeMYR2VF/m6RoI/U7mEdo8iFC/Oh18oEFFPTipxTSU40iu4R0Tqkse/BTzk75/eaU18wBFrnQm/jauOub2GJce4JjcPswYQrduOcxEkVx28kUwEc83NXXqpKnFtNTiSK72s8k9m1/S13EmLz5RuGk+dlPYRn1p7A/RrdB04OOyH1hCH2w9UX6DksRjVkHfltul8Q/GFCpx2mIwufySvifzkv5hZ/W4RnaP2tbKO82tB7oVun6gdBuZZFv8RPKEy0pihYjf0PN9eMKqMTOU4qT7Y8So5pcei7/k5ceScbidPQ4eFjqcHI28M7n1wFRC5+bU1pXbhphUR5Nei1lHx0n3R4tRzy89FqfzEkndPbzqhxX6XRw5UKZNZfWRv+NVZ5s0tSI54sv3kRVNqMVJ9icvdDa/pK/jTF6ePeYuI1HPK/ks40Losxw5UOWJponbBfEVfmK27csSyeZgGaWIKJ5izAzFOMfE2cZQ+RWOxZm8HHI7pPbNE+JLnGScaJ9Gea20Q6HBqxGhy6v4PEDo6eGVdFtZ5wZCz0x0y3CF1ZmA0GAqIDSYCgit+PQ39z5/ORgJCE0SbQKNIHScL7BcXGgrUO9Cfzq//rmw0PqBRniXQoSpvOrJUm39lFxWOPsQxRE/rEj+p8/a+Ll86RlLeFIopfWQZXYuLDRhBeTPm0SF+qKwJ+tZ7qT+6Pj8xFAkDi8i2RPwWkDomjDuXyUkC6h+01XbjvXfV9EnT4joEfje59pAaCVQXajsi0BK0rP9nxSathRfW70mEPqE0N2t0IpQ56VWCV6LiwvNwhwVullvPvMtQbE/C346vum/nSDqntrGugYXF5oc2H8lWH5aQhGhjfRJhGHJfF3yyqWjWt8eX+frNkTxQkxpCaEvKfRnMSsueBoI/U5KtyAXvud9NRD6zdgHIVidXwuEBlMBocFUQGgwFRAaTAWEBlMBocFUQGgwFRAaTAWEBlORFRoFZfQCoVEmKt/r/+j4cqjgLrcFAAAAAElFTkSuQmCC'];
+//END Configuration variables.
+
+
+iperceptions_126736.isMobile = (function(a){return (/android|avantgo|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|iris|kindle|lge |maemo|midp|mmp|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|googlebot|google web preview|msbot|yahoo|bingbot|silk|mobile|rim tablet|hp-tablet|touch;|touch\)|wpdesktop/i.test(a))})(navigator.userAgent || navigator.vendor || window.opera);
+
+//API function to add floating icon
+iperceptions_126736.ipeIcon = function(config) {
+    config = config || {};
+    if(iperceptions_126736.launchedIcon) {
+        return;
+    }
+    iperceptions_126736.launchedIcon = true;
+
+    var langIDIndex = 0;
+    for (var i = 0; i < iperceptions_126736.langIDArray.length; i++)
+    {
+        if ( iperceptions_126736.langIDArray[i] == config.langID )
+        {
+            langIDIndex = i;
+            break;
+        }
+    }
+
+    var _pos_x = config.pos_x || iperceptions_126736.posXArray[langIDIndex], //left|middle|right
+        _pos_y = config.pos_y || iperceptions_126736.posYArray[langIDIndex], //'top'|middle|bottom 
+        _img_out = config.img_out || iperceptions_126736.imgOutArray[langIDIndex],
+        _img_over = config.img_over || iperceptions_126736.imgOverArray[langIDIndex], 
+        _size_out = iperceptions_126736.imgSizeOut || [68, 68],
+        _size_over = iperceptions_126736.imgSizeOver || [180, 68],
+        _size_current = _size_out,
+        _id = Math.ceil(Math.random() * 10000),
+        _img_id = 'UIF-IMG-' + _id,
+		_page = '<img id="' + _img_id + '" ' +
+        ' src="' + _img_out + '"' +
+        'style="display:none;position:fixed;cursor:pointer;margin:0px!important;padding:0px!important;border:0px!important;' +
+        'z-index: 2147483647!important;' +
+		(_pos_x == 'right' ? 'text-align:right!important;' : 'text-align:left!important;') +
+		(_pos_y == 'bottom' ? 'vertical-align:bottom!important;' : 'vertical-align:top!important;') +
+        'background-color:transparent!important;width:auto; height:auto;"/>', 
+		_img, _is_ie, _icon_timer,
+      
+        //Generic method to attach an event to a DOM element
+        domAddEvent = function (target, eventName, handlerFn) {
+            if (target.addEventListener)
+                target.addEventListener(eventName, handlerFn, true);
+            else if (target.attachEvent)
+                target.attachEvent("on" + eventName, handlerFn);
+            else
+                target["on" + eventName] = handlerFn;
+        },
+
+        ipeSetPos = function(pos_x, pos_y) {
+            var divW = _size_current[0],
+                divH = _size_current[1],
+                viewsize = iperceptions_126736.viewSize(),
+                bodyWidth, bodyHeight, winW, winH;
+
+            //Our default viewsize calculation sometimes to include the scrollbar.  document.documentElement.client[Width|Height] do not include scrollbar.
+            bodyWidth = document.documentElement.clientWidth;
+            if (bodyWidth > 0 && bodyWidth < viewsize[0]) {
+                viewsize[0] = bodyWidth;
+            }
+
+            bodyHeight = document.documentElement.clientHeight;
+            if (bodyHeight > 0 && bodyHeight < viewsize[1]) {
+                viewsize[1] = bodyHeight;
+            }
+
+            winW = parseInt((viewsize[0] - divW));
+            winH = parseInt((viewsize[1] - divH));
+               
+            if (pos_x == 'left') { _img.style.left = '0px'; }
+            else if (pos_x == 'right') { _img.style.right = '0px'; }
+            else if(winW >= 0) { _img.style.left = (winW / 2 >> 0) + 'px'; }
+            if (pos_y == 'top') { _img.style.top = '0px'; }
+            else if (pos_y == 'bottom') { _img.style.bottom = "0px"; }
+            else if(winH >= 0) { _img.style.top = (winH / 2 >> 0) + 'px'; }
+        },
+
+        isIE = function() {
+            var ua = navigator.userAgent.toLowerCase(),
+            isOpera = (ua.indexOf('opera') != -1);
+            return ua.indexOf('msie') != -1 && !isOpera && (ua.indexOf('webtv') == -1);
+        },
+
+        IEMajorVersion = function() {
+            var m = /MSIE\s*(\d*)/.exec(navigator.userAgent),
+                v = (m && m[1]) || -1;
+            if(isNaN(parseInt(v, 10))) {
+                v = -1;
+            }
+            return v;
+        },
+
+		ipeIconComplete = function() {
+            _img = document.getElementById(_img_id);
+            _img.style.display = "block";
+            ipeSetPos(_pos_x, _pos_y);
+
+            domAddEvent(window, 'resize', function () { ipeSetPos(_pos_x, _pos_y); });
+            domAddEvent(window, 'scroll', function () { ipeSetPos(_pos_x, _pos_y); }); 
+            domAddEvent(_img, "mouseout", function () {
+                    _img.src = _img_out;
+                    _size_current = _size_out;
+                });
+            domAddEvent(_img, "mouseover", function () {
+                    _img.src = _img_over;
+                    _size_current = _size_over;
+            });
+            domAddEvent(_img, "click", function (e) {
+                iperceptions_126736.ipeCC(config);
+            });
+        };
+
+    _is_ie = isIE();
+
+    //Now blocking IE6 and mobile devices
+    if(_is_ie && IEMajorVersion() < 8) {
+        return;
+    }
+    if(iperceptions_126736.blockMobile && iperceptions_126736.isMobile) {
+        return;
+    }
+
+    _icon_timer = setInterval(function() {
+        if(document.readyState === "complete") {
+            if (_is_ie && IEMajorVersion() < 10) {
+                document.body.insertAdjacentHTML("beforeEnd", _page);
+            } else {
+                _dL = document.createElement("div");
+                _dL.innerHTML = _page;
+                document.body.appendChild(_dL);
+            }
+            clearInterval(_icon_timer);
+            ipeIconComplete();
+        }  
+    }, 250);
+}
+
+
+//API function to launch comment card
+iperceptions_126736.ipeCC = function(config) {
+    var config = config || {};
+    config.surveyID = config.surveyID || iperceptions_126736.surveyID;
+
+    iperceptions_126736.launch(config);
+}
+
+iperceptions_126736.viewSize = function() {
+    var width = 0, height = 0;
+    if (typeof (window.innerWidth) == 'number') {
+        width = window.innerWidth;
+        height = window.innerHeight;
+    } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+        width = document.documentElement.clientWidth;
+        height = document.documentElement.clientHeight;
+    } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+        width = document.body.clientWidth;
+        height = document.body.clientHeight;
+    }
+    return [width, height];
+}
+
+iperceptions_126736.launch = function(config) {
+    config.langID = config.langID || iperceptions_126736.langID;
+
+    var RC = function(n){var nEQ= n+'='; var ca= document.cookie.split(';');for(var i=0;i < ca.length;i++) {var c= ca[i];while (c.charAt(0)==' ') c= c.substring(1,c.length);if (c.indexOf(nEQ) == 0) return c.substring(nEQ.length,c.length);} };
+
+    var name = "IPerceptions_comment_" + config.surveyID;
+    var w = 0, h = 0, url = "", l = 0, t = 0, vs = iperceptions_126736.viewSize(), 
+        sdfc = "c69fcf6c" + "-" + config.surveyID + "-" + "9fd8892b-e604-4992-bb96-ed7aa37b7142";
+    w = iperceptions_126736.winWidth || 676;
+    h = iperceptions_126736.winHeight || 676;
+    l = Math.max((vs[0] - w) / 2, 0);
+    t = Math.max((vs[1] - h) / 2, 0);
+    url = window.location.protocol + "//ips-invite.iperceptions.com/WebValidator.aspx?lID=" + config.langID + "&sdfc=" + sdfc + "&source=91787&destination=commentcard&referrer=" + encodeURIComponent(window.location.href) + (iperceptions_126736.logoBrandID ? "&brandID=" + iperceptions_126736.logoBrandID : "" ) + (iperceptions_126736.siteID ? "&siteID=" + iperceptions_126736.siteID : "" );
+ 
+    var features = "width=" + w + ",height=" + h + ", left=" + l + ", top=" + t + ", resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, copyhistory=no";
+
+    window.open(url, name, features);
+}
+
+var ipeCC = [iperceptions_126736];

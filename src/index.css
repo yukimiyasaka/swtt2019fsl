@@ -1,0 +1,187 @@
+/** --------- Global Style --------- **/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.mobile-full-width {
+  width: 100%;
+}
+
+/** --------- iMessage Screen Style --------- **/
+.fixed-top {
+  position: fixed;
+  top: 0px;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.fixed-bottom {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.imessage-padding {
+	padding-top: 79px;
+}
+.imessage-body {
+	padding-top: 64px;
+	padding-bottom: 79px;
+	background-attachment: scroll;
+}
+.dots-iphone-first {
+  position: absolute;
+  top: 323px;
+  left: 8px;
+  width: 79px;
+}
+.dots-iphone-last {
+  position: absolute;
+  top: 539px;
+  left: 7px;
+  width: 79px;
+}
+.hidden-dots {
+  display: none;
+}
+
+/** ----- Iphone Notification Popup ----- **/
+@keyframes iphoneNotification {
+  from {
+    position: absolute;
+    top: -260px;
+    width: 100%;
+  }
+  to {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+  }
+}
+
+.hidden-popup {
+  display: none;
+}
+
+.popup {
+  position: absolute;
+  display: block;
+  animation-name: iphoneNotification;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards;     /* IE 10+ */
+  animation-fill-mode: forwards;
+}
+
+/** --------- Lock Screen Notification Style --------- **/
+.lock-screen {
+  position: relative;
+  z-index: 900;
+}
+.lock-screen_active {
+  animation-name: scrollUpLockScreen;
+  animation-duration: .7s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes scrollUpLockScreen {
+  from {transform: translateY(0px);opacity: 1;}
+  to {transform: translateY(-768px);opacity: 1;}
+}
+
+
+
+
+
+.lock-screen_active_down {
+  animation-name: scrollDownLockScreen;
+  animation-duration: 1s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes scrollDownLockScreen {
+  from {transform: translateY(-768px);opacity: 1;}
+  to {transform: translateY(768px);opacity: 1;}
+}
+#hidden-lock-screen{
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 1;
+}
+.hidden-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#hidden-notification-earlier{
+  width: 95%;
+  position: absolute;
+  top: 250px;
+  left: 2.5%;
+}
+#hidden-notification-now{
+  z-index: 2;
+}
+@keyframes iphoneNotificationNow {
+  from {
+    height: 0;
+    width: 0;
+    margin-left: 50%;
+    margin-top: 50%;
+  }
+  to {
+    height: inherit;
+    width: 95%;
+    position: absolute;
+    top: 240px;
+    margin-left: 2.5%;
+  }
+}
+.iphone-popup {
+  position: absolute;
+  display: block;
+  animation-name: iphoneNotificationNow;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.iphone-popup-earlier{
+  animation-name: moveNotificationEarlier;
+  animation-duration: 0.5s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes moveNotificationEarlier {
+  from {transform: translateY(0px);opacity: 1;}
+  to {transform: translateY(100px);opacity: 1;}
+}
+
+
+
+
+
+.hidden_modal {
+  display: none;
+}
+.closet-installation_modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
